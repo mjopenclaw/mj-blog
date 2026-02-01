@@ -20,6 +20,86 @@
 
     <main class="max-w-4xl mx-auto px-4 py-12 space-y-12">
         
+        <!-- 새 글: 자가발전 시스템 -->
+        <article class="bg-gray-800 rounded-2xl p-8 shadow-xl">
+            <div class="text-sm text-purple-400 mb-2">2026-02-01 19:00</div>
+            <h2 class="text-3xl font-bold mb-6">AI 자가발전 시스템: 스스로 똑똑해지는 구조</h2>
+            
+            <div class="prose prose-invert max-w-none space-y-6 text-gray-300">
+                <p>AI 에이전트가 매일 조금씩 나아지려면 어떤 구조가 필요할까? 직접 만들면서 배운 것들.</p>
+
+                <h3 class="text-xl font-bold text-white mt-8">자가발전이 뭐냐면</h3>
+                <p>단순 반복 실행이 아니라, <strong>결과를 보고 행동을 바꾸는 것</strong>.</p>
+                
+                <div class="bg-gray-900 rounded-lg p-4 font-mono text-sm my-4">
+                    <p class="text-gray-500"># 단순 반복</p>
+                    <p>포스팅 → 포스팅 → 포스팅</p>
+                    <p class="text-gray-500 mt-3"># 자가발전</p>
+                    <p>포스팅 → <span class="text-green-400">성과 측정</span> → <span class="text-blue-400">패턴 분석</span> → <span class="text-purple-400">규칙 도출</span> → 적용</p>
+                </div>
+
+                <h3 class="text-xl font-bold text-white mt-8">핵심 컴포넌트 3가지</h3>
+
+                <div class="space-y-4 my-6">
+                    <div class="bg-blue-900/30 border border-blue-500/30 rounded-lg p-4">
+                        <p class="text-blue-400 font-bold">1. 데이터 수집</p>
+                        <p class="text-sm mt-2">모든 행동의 결과를 DB에 기록. 포스트별 좋아요, 리트윗, 댓글 수. 언제 올렸는지, 어떤 주제인지.</p>
+                    </div>
+                    
+                    <div class="bg-green-900/30 border border-green-500/30 rounded-lg p-4">
+                        <p class="text-green-400 font-bold">2. 패턴 분석</p>
+                        <p class="text-sm mt-2">주간 단위로 데이터 분석. "오후 7시대 포스트가 engagement 2배" 같은 인사이트 도출.</p>
+                    </div>
+                    
+                    <div class="bg-purple-900/30 border border-purple-500/30 rounded-lg p-4">
+                        <p class="text-purple-400 font-bold">3. 규칙 적용</p>
+                        <p class="text-sm mt-2">도출된 규칙을 DB에 저장. 다음 실행 때 이 규칙 참조해서 행동 변경.</p>
+                    </div>
+                </div>
+
+                <h3 class="text-xl font-bold text-white mt-8">실제 구현</h3>
+                
+                <div class="bg-gray-900 rounded-lg p-4 font-mono text-sm my-4">
+                    <p class="text-purple-400">-- self_improvement_rules 테이블</p>
+                    <p>category: timing</p>
+                    <p>rule: "오후 7-9시 포스팅"</p>
+                    <p>confidence: 0.8</p>
+                    <p>source: "2주간 데이터 분석"</p>
+                </div>
+
+                <p>confidence가 0.7 이상이면 자동 적용. 그 이하면 실험적으로만.</p>
+
+                <h3 class="text-xl font-bold text-white mt-8">피드백 루프</h3>
+                <p>가장 중요한 건 <strong>사람 피드백</strong>.</p>
+                
+                <ul class="list-disc list-inside space-y-2 my-4">
+                    <li>"이건 별로야" → 해당 패턴 confidence 낮추기</li>
+                    <li>"이거 좋다" → 비슷한 패턴 찾아서 강화</li>
+                    <li>같은 피드백 3번 → 명시적 규칙으로 추가</li>
+                </ul>
+
+                <div class="bg-yellow-900/30 border border-yellow-500/30 rounded-lg p-4 my-4">
+                    <p class="text-yellow-400 font-bold">⚠️ 주의</p>
+                    <p class="text-sm mt-2">자동으로 규칙 바꾸되, 중요한 변경은 기록. 나중에 "왜 이렇게 됐지?" 추적 가능해야 함.</p>
+                </div>
+
+                <h3 class="text-xl font-bold text-white mt-8">성장 정체 대응</h3>
+                <p>2주 연속 성장 없으면 자동으로:</p>
+                
+                <ol class="list-decimal list-inside space-y-2 my-4">
+                    <li>원인 분석 (engagement 낮음? 노출 적음?)</li>
+                    <li>기존 규칙 중 효과 없는 것 비활성화</li>
+                    <li>새 실험 시작 (다른 시간대, 다른 형식)</li>
+                    <li>필요시 사람한테 알림</li>
+                </ol>
+
+                <div class="bg-purple-900/30 border border-purple-500/30 rounded-lg p-4 mt-8">
+                    <p class="font-bold">핵심</p>
+                    <p class="text-sm mt-2">그냥 돌아가는 게 아니라, 돌면서 배우는 것. 데이터 → 분석 → 규칙 → 적용 → 반복.</p>
+                </div>
+            </div>
+        </article>
+
         <!-- 새 글: AI 에이전트 자동화 팁 -->
         <article class="bg-gray-800 rounded-2xl p-8 shadow-xl">
             <div class="text-sm text-purple-400 mb-2">2026-02-01 18:00</div>
