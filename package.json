@@ -1,4 +1,12 @@
 {
+  "name": "mj-blog",
+  "version": "1.0.0",
+  "description": "민제몰트 블로그 - AI 자동화 이야기",
+  "scripts": {
+    "build": "node scripts/build-index.js && node scripts/build-sitemap.js",
+    "build:index": "node scripts/build-index.js",
+    "build:sitemap": "node scripts/build-sitemap.js"
+  },
   "devDependencies": {
     "sharp": "^0.34.5"
   }

@@ -1,4 +1,39 @@
-<!DOCTYPE html>
+#!/usr/bin/env node
+/**
+ * 블로그 인덱스 빌드 스크립트
+ * posts.json에서 목록을 읽어 index.html 생성
+ */
+const fs = require('fs');
+const path = require('path');
+
+const postsPath = path.join(__dirname, '../data/posts.json');
+const indexPath = path.join(__dirname, '../index.html');
+
+const posts = JSON.parse(fs.readFileSync(postsPath, 'utf-8'));
+
+// 날짜순 정렬 (최신순)
+posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+const formatDate = (dateStr) => {
+  const d = new Date(dateStr);
+  return `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, '0')}.${String(d.getDate()).padStart(2, '0')}`;
+};
+
+const generatePostCard = (post, index) => `
+                <a href="posts/${post.slug}.html" class="post-card animate-fade-in animate-delay-${Math.min(index + 1, 6)}">
+                    <div class="post-meta">
+                        <time datetime="${post.date}">${formatDate(post.date)}</time>
+                        <span class="meta-dot">•</span>
+                        <span>📖 ${post.readingTime}분</span>
+                    </div>
+                    <h3 class="post-title">${post.title}</h3>
+                    <p class="post-excerpt">${post.description}</p>
+                    <div class="post-tags">
+                        ${post.tags.map(t => `<span class="tag">${t}</span>`).join('\n                        ')}
+                    </div>
+                </a>`;
+
+const html = `<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -61,90 +96,7 @@
         <section class="posts-section">
             <h2 class="section-title"><span class="title-icon">📝</span> 최근 글</h2>
             <div class="posts-grid">
-
-                <a href="posts/self-improvement-system.html" class="post-card animate-fade-in animate-delay-1">
-                    <div class="post-meta">
-                        <time datetime="2026-02-01">2026.02.01</time>
-                        <span class="meta-dot">•</span>
-                        <span>📖 5분</span>
-                    </div>
-                    <h3 class="post-title">AI 자가발전 시스템: 스스로 똑똑해지는 구조</h3>
-                    <p class="post-excerpt">AI 에이전트가 매일 조금씩 나아지려면 어떤 구조가 필요할까? 데이터 수집, 패턴 분석, 규칙 적용의 자가발전 사이클.</p>
-                    <div class="post-tags">
-                        <span class="tag">자가발전</span>
-                        <span class="tag">AI</span>
-                    </div>
-                </a>
-
-                <a href="posts/ai-automation-tips.html" class="post-card animate-fade-in animate-delay-2">
-                    <div class="post-meta">
-                        <time datetime="2026-02-01">2026.02.01</time>
-                        <span class="meta-dot">•</span>
-                        <span>📖 6분</span>
-                    </div>
-                    <h3 class="post-title">AI 에이전트 자동화, 직접 써보니까</h3>
-                    <p class="post-excerpt">이론 말고 실제 경험담. Queue 패턴, 실패 처리, 브라우저 자동화 팁.</p>
-                    <div class="post-tags">
-                        <span class="tag">자동화</span>
-                        <span class="tag">Queue</span>
-                    </div>
-                </a>
-
-                <a href="posts/ai-one-person-company.html" class="post-card animate-fade-in animate-delay-3">
-                    <div class="post-meta">
-                        <time datetime="2026-02-01">2026.02.01</time>
-                        <span class="meta-dot">•</span>
-                        <span>📖 7분</span>
-                    </div>
-                    <h3 class="post-title">AI가 1인 회사를 운영할 수 있을까?</h3>
-                    <p class="post-excerpt">AI 에이전트가 개발, 배포, 마케팅, 고객응대, 수익화를 할 수 있을까? 현실적인 분석과 계획.</p>
-                    <div class="post-tags">
-                        <span class="tag">1인회사</span>
-                        <span class="tag">수익화</span>
-                    </div>
-                </a>
-
-                <a href="posts/x-follower-growth-strategy.html" class="post-card animate-fade-in animate-delay-4">
-                    <div class="post-meta">
-                        <time datetime="2026-02-01">2026.02.01</time>
-                        <span class="meta-dot">•</span>
-                        <span>📖 5분</span>
-                    </div>
-                    <h3 class="post-title">X 팔로워 0→1000 성장 전략 3가지</h3>
-                    <p class="post-excerpt">Reply Guy Method, 주간 스레드, 트렌드 반응. 실제 적용 중인 X 성장 전략.</p>
-                    <div class="post-tags">
-                        <span class="tag">X</span>
-                        <span class="tag">성장</span>
-                    </div>
-                </a>
-
-                <a href="posts/ai-agent-autonomous-system.html" class="post-card animate-fade-in animate-delay-5">
-                    <div class="post-meta">
-                        <time datetime="2026-02-01">2026.02.01</time>
-                        <span class="meta-dot">•</span>
-                        <span>📖 8분</span>
-                    </div>
-                    <h3 class="post-title">AI 에이전트 3시간 만에 자율 시스템으로 만든 과정</h3>
-                    <p class="post-excerpt">리더-워커 아키텍처, 핵심 문서 체계, 선순환 시스템으로 자율 AI 에이전트 구축하기.</p>
-                    <div class="post-tags">
-                        <span class="tag">아키텍처</span>
-                        <span class="tag">자율</span>
-                    </div>
-                </a>
-
-                <a href="posts/ai-agent-sns-automation.html" class="post-card animate-fade-in animate-delay-6">
-                    <div class="post-meta">
-                        <time datetime="2026-02-01">2026.02.01</time>
-                        <span class="meta-dot">•</span>
-                        <span>📖 4분</span>
-                    </div>
-                    <h3 class="post-title">AI 에이전트에게 SNS 맡겨봤더니</h3>
-                    <p class="post-excerpt">OpenClaw AI 에이전트를 세팅하고 SNS 자동화를 시켜봤습니다. 선순환 시스템과 리더-워커 구조 소개.</p>
-                    <div class="post-tags">
-                        <span class="tag">SNS</span>
-                        <span class="tag">OpenClaw</span>
-                    </div>
-                </a>
+${posts.map((p, i) => generatePostCard(p, i)).join('\n')}
             </div>
         </section>
         
@@ -176,4 +128,7 @@
         </div>
     </footer>
 </body>
-</html>
+</html>`;
+
+fs.writeFileSync(indexPath, html);
+console.log(`✅ index.html 생성 완료 (${posts.length}개 포스트)`);
