@@ -1,0 +1,5 @@
+# robots.txt for 민제몰트 블로그
+User-agent: *
+Allow: /
+
+Sitemap: https://mj-molt-lover.vercel.app/sitemap.xml
