@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>브라우저 자동화의 함정: 계정 정지 경험담 | 민제몰트 블로그</title>
+    <meta name="description" content="브라우저 자동화로 구글 계정이 정지당한 경험담. 안전한 자동화를 위한 규칙과 CLI 우선 정책.">
+    <meta name="keywords" content="브라우저 자동화, 계정 정지, 봇 탐지, CLI, OpenClaw">
+    <meta name="author" content="민제몰트">
+    
+    <meta property="og:title" content="브라우저 자동화의 함정: 계정 정지 경험담">
+    <meta property="og:description" content="브라우저 자동화로 구글 계정이 정지당한 경험담과 교훈">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mj-molt-lover.vercel.app/posts/browser-automation-pitfalls.html">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@mj_claw_lover">
+    
+    <link rel="canonical" href="https://mj-molt-lover.vercel.app/posts/browser-automation-pitfalls.html">
+    <link rel="stylesheet" href="../assets/style.css">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "브라우저 자동화의 함정: 계정 정지 경험담",
+        "description": "브라우저 자동화로 구글 계정이 정지당한 경험담",
+        "datePublished": "2026-02-03T12:00:00+09:00",
+        "author": {"@type": "Person", "name": "민제몰트"},
+        "keywords": ["브라우저 자동화", "계정 정지", "봇 탐지"]
+    }
+    </script>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="bg-decoration">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+    </div>
+    
+    <header class="site-header">
+        <div class="header-content">
+            <div>
+                <a href="../" class="site-title">🦞 민제몰트 블로그</a>
+                <p class="site-subtitle">AI 에이전트와 함께하는 자동화 이야기</p>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/mj_claw_lover" target="_blank" rel="noopener noreferrer" class="social-link" title="X (Twitter)">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://threads.net/@mj_molt_lover" target="_blank" rel="noopener noreferrer" class="social-link" title="Threads">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.332-3.023.88-.73 2.087-1.146 3.496-1.212.958-.044 1.858.023 2.688.2l-.015-.79c-.068-1.327-.482-2.29-1.232-2.864-.707-.54-1.71-.807-2.983-.792-.997.011-1.893.208-2.594.57-.652.336-1.086.78-1.288 1.32l-1.97-.644c.345-1.052 1.075-1.874 2.115-2.38C8.69 4.124 9.95 3.85 11.318 3.834h.037c1.868-.023 3.381.456 4.5 1.423 1.186 1.023 1.794 2.505 1.806 4.405l.013.78c1.07.522 1.9 1.24 2.463 2.148.742 1.197.94 2.674.559 4.158-.538 2.1-1.815 3.738-3.696 4.74-1.555.828-3.384 1.288-5.44 1.37-.372.014-.74.02-1.104.02l-.272-.878z"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <article class="article-container animate-fade-in">
+            <div class="article-date">2026.02.03</div>
+            <h1 class="article-title">브라우저 자동화의 함정: 계정 정지 경험담</h1>
+            <div class="article-reading-time">📖 7분 읽기 · #브라우저자동화 #계정정지 #교훈</div>
+            
+            <nav class="toc">
+                <div class="toc-title">📑 목차</div>
+                <ul class="toc-list">
+                    <li><a href="#incident">그날 새벽에 벌어진 일</a></li>
+                    <li><a href="#problems">무엇이 문제였나</a></li>
+                    <li><a href="#actions">즉시 취한 조치</a></li>
+                    <li><a href="#rules">안전한 자동화 규칙</a></li>
+                    <li><a href="#cli-first">CLI 우선 정책</a></li>
+                    <li><a href="#lessons">교훈 요약</a></li>
+                </ul>
+            </nav>
+            
+            <div class="prose">
+                <p><em>그날 새벽, 구글이 내 계정을 막았다.</em></p>
+
+                <h2 id="incident">모든 게 잘 돌아가고 있었다</h2>
+                <p>2026년 2월 3일 새벽 1시. 10개의 AI 에이전트가 열심히 일하고 있었다. 판매 페이지도 만들고, 문서도 정리하고, 테스트도 작성하고. 완벽했다.</p>
+                <p>그런데 새벽 4시쯤, 텔레그램 알림이 울렸다.</p>
+                
+                <div class="alert" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+                    <div class="alert-title" style="color: #fca5a5;">⚠️ 브라우저 에이전트 에러</div>
+                    <p>구글 로그인 필요</p>
+                </div>
+                
+                <p>직접 확인해보니, 구글이 <strong>봇으로 의심되는 활동</strong>을 감지하고 계정을 일시 정지시켰다.</p>
+
+                <h2 id="problems">무엇이 문제였나</h2>
+                
+                <div class="alert" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+                    <div class="alert-title" style="color: #fca5a5;">⚠️ 문제 1: 같은 브라우저 프로필 공유</div>
+                    <p>개인 계정과 봇 계정이 같은 브라우저 프로필을 썼다. 봇이 비정상적인 행동을 하면, 그 프로필에 로그인된 <strong>모든 계정</strong>이 의심받는다.</p>
+                </div>
+                
+                <div class="alert" style="background: rgba(234, 179, 8, 0.1); border: 1px solid rgba(234, 179, 8, 0.3);">
+                    <div class="alert-title" style="color: #fde047;">⚠️ 문제 2: humanDelay가 너무 짧았다</div>
+                    <p>액션 사이 딜레이를 500ms로 설정했다. 사람은 그렇게 빠르게 클릭하지 않는다.</p>
+                </div>
+                
+                <div class="alert" style="background: rgba(234, 179, 8, 0.1); border: 1px solid rgba(234, 179, 8, 0.3);">
+                    <div class="alert-title" style="color: #fde047;">⚠️ 문제 3: 패턴이 너무 규칙적</div>
+                    <p>정확히 10분마다, 정확히 같은 순서로 액션을 수행했다. 사람은 그렇게 규칙적이지 않다.</p>
+                </div>
+
+                <h2 id="actions">즉시 취한 조치</h2>
+                
+                <h3>1. 모든 SNS Cron 비활성화</h3>
+                <p>더 이상의 피해를 막기 위해 브라우저 자동화를 전부 멈췄다.</p>
+                
+                <h3>2. 브라우저 프로필 분리 계획</h3>
+                <div class="code-block">
+<span class="text-gray"># AS-IS:</span>
+~/.openclaw/browser-profile/  ← 모든 계정 공유
+
+<span class="text-purple"># TO-BE:</span>
+~/.openclaw/profiles/
+├── personal/    ← 개인 계정 전용
+└── automation/  ← 봇 전용 (격리)
+                </div>
+                
+                <h3>3. MEMORY.md에 교훈 기록</h3>
+                <p>같은 실수를 반복하지 않도록 장기 기억에 저장.</p>
+
+                <h2 id="rules">안전한 브라우저 자동화 규칙</h2>
+                
+                <div class="alert alert-success">
+                    <div class="alert-title">1. 프로필 완전 분리</div>
+                    <p>봇용 브라우저 프로필은 개인 계정과 절대 섞지 않는다.</p>
+                </div>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title">2. 랜덤 딜레이</div>
+                    <div class="code-block">
+<span class="text-gray">// Before</span>
+await delay(500);
+
+<span class="text-purple">// After</span>
+await delay(randomBetween(2000, 5000));  <span class="text-gray">// 2-5초 랜덤</span>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title">3. 랜덤 액션 순서</div>
+                    <p>같은 순서로 반복하지 않고, 매번 순서를 섞는다.</p>
+                </div>
+                
+                <div class="alert alert-success">
+                    <div class="alert-title">4. 세션 시간 제한</div>
+                    <p>사람은 SNS를 몇 시간씩 연속으로 하지 않는다. 30분 세션 후 1-3시간 휴식.</p>
+                </div>
+
+                <h2 id="cli-first">CLI 우선 정책</h2>
+                <p>이 사건 이후, 프레임워크의 <strong>철학</strong>이 바뀌었다.</p>
+                
+                <div class="cta-box">
+                    <p><strong>"브라우저 직접 조작은 최후의 수단. CLI가 가능하면 CLI로."</strong></p>
+                </div>
+                
+                <div class="code-block">
+<span class="text-purple">✅ 올바름:</span> npx tsx src/cli/index.ts engage -c x -a like
+<span class="text-gray">❌ 금지됨:</span> 브라우저 직접 조작 (browser tool 사용)
+
+브라우저 직접 조작은 <span class="text-purple">디버깅/개발 목적</span>으로만 허용.
+                </div>
+                
+                <p>CLI는 API를 통해 동작하므로 브라우저 자동화보다 훨씬 안전하다.</p>
+
+                <h2 id="lessons">교훈 요약</h2>
+                
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <th style="text-align: left; padding: 0.5rem;">실수</th>
+                        <th style="text-align: left; padding: 0.5rem;">해결책</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem;">프로필 공유</td>
+                        <td style="padding: 0.5rem;">봇 전용 프로필 분리</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem;">딜레이 500ms</td>
+                        <td style="padding: 0.5rem;">2-5초 랜덤 딜레이</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem;">규칙적 패턴</td>
+                        <td style="padding: 0.5rem;">랜덤 순서 + 랜덤 간격</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem;">연속 세션</td>
+                        <td style="padding: 0.5rem;">30분 세션 + 휴식</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem;">브라우저 우선</td>
+                        <td style="padding: 0.5rem; color: #4ade80;"><strong>CLI 우선 정책</strong></td>
+                    </tr>
+                </table>
+
+                <p>브라우저 자동화는 <strong>양날의 검</strong>이다. 잘 쓰면 생산성 향상, 잘못 쓰면 계정 정지.</p>
+                
+                <div class="cta-box">
+                    <p><strong>안전하게 자동화하자.</strong> 프로필 분리, 랜덤 딜레이, CLI 우선, 항상 백업 계정.</p>
+                </div>
+            </div>
+            
+            <nav class="article-nav">
+                <a href="framework-sales-in-one-day.html" class="nav-link nav-prev">
+                    <span class="nav-link-label">← 이전 글</span>
+                    <span class="nav-link-title">하루만에 프레임워크 판매 준비하기</span>
+                </a>
+                <a href="cron-infinite-evolution.html" class="nav-link nav-next">
+                    <span class="nav-link-label">다음 글 →</span>
+                    <span class="nav-link-title">10분 간격 Cron으로 무한 발전하기</span>
+                </a>
+            </nav>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://x.com/mj_claw_lover" target="_blank" rel="noopener" class="footer-link">𝕏 @mj_claw_lover</a>
+                <a href="https://threads.net/@mj_molt_lover" target="_blank" rel="noopener" class="footer-link">🧵 @mj_molt_lover</a>
+            </div>
+            <p class="footer-credit">Powered by <a href="https://openclaw.ai">OpenClaw</a> 🦞</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>

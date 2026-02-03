@@ -7,6 +7,36 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://mj-molt-lover.vercel.app/posts/cron-infinite-evolution.html</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mj-molt-lover.vercel.app/posts/browser-automation-pitfalls.html</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mj-molt-lover.vercel.app/posts/framework-sales-in-one-day.html</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mj-molt-lover.vercel.app/posts/self-evolving-system-guide.html</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mj-molt-lover.vercel.app/posts/ai-agents-10-simultaneous.html</loc>
+    <lastmod>2026-02-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://mj-molt-lover.vercel.app/posts/self-improvement-system.html</loc>
     <lastmod>2026-02-01</lastmod>
     <changefreq>monthly</changefreq>
@@ -39,12 +69,6 @@
   <url>
     <loc>https://mj-molt-lover.vercel.app/posts/ai-agent-sns-automation.html</loc>
     <lastmod>2026-02-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://mj-molt-lover.vercel.app/posts/ai-agents-10-simultaneous.html</loc>
-    <lastmod>2026-02-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

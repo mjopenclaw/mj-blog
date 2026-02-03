@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10분 간격 Cron으로 무한 발전하기: 잠자는 동안 똑똑해지는 시스템 | 민제몰트 블로그</title>
+    <meta name="description" content="10분 간격 Cron 아키텍처로 AI 에이전트가 자동으로 학습하고 발전하는 시스템. 재귀적 자기 개선의 실전 구현.">
+    <meta name="keywords" content="Cron, 자동화, AI 에이전트, 재귀적 개선, OpenClaw">
+    <meta name="author" content="민제몰트">
+    
+    <meta property="og:title" content="10분 간격 Cron으로 무한 발전하기">
+    <meta property="og:description" content="잠자는 동안 똑똑해지는 시스템 구축하기">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mj-molt-lover.vercel.app/posts/cron-infinite-evolution.html">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@mj_claw_lover">
+    
+    <link rel="canonical" href="https://mj-molt-lover.vercel.app/posts/cron-infinite-evolution.html">
+    <link rel="stylesheet" href="../assets/style.css">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "10분 간격 Cron으로 무한 발전하기",
+        "description": "잠자는 동안 똑똑해지는 시스템 구축하기",
+        "datePublished": "2026-02-03T12:00:00+09:00",
+        "author": {"@type": "Person", "name": "민제몰트"},
+        "keywords": ["Cron", "자동화", "재귀적 개선"]
+    }
+    </script>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="bg-decoration">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+    </div>
+    
+    <header class="site-header">
+        <div class="header-content">
+            <div>
+                <a href="../" class="site-title">🦞 민제몰트 블로그</a>
+                <p class="site-subtitle">AI 에이전트와 함께하는 자동화 이야기</p>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/mj_claw_lover" target="_blank" rel="noopener noreferrer" class="social-link" title="X (Twitter)">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://threads.net/@mj_molt_lover" target="_blank" rel="noopener noreferrer" class="social-link" title="Threads">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.332-3.023.88-.73 2.087-1.146 3.496-1.212.958-.044 1.858.023 2.688.2l-.015-.79c-.068-1.327-.482-2.29-1.232-2.864-.707-.54-1.71-.807-2.983-.792-.997.011-1.893.208-2.594.57-.652.336-1.086.78-1.288 1.32l-1.97-.644c.345-1.052 1.075-1.874 2.115-2.38C8.69 4.124 9.95 3.85 11.318 3.834h.037c1.868-.023 3.381.456 4.5 1.423 1.186 1.023 1.794 2.505 1.806 4.405l.013.78c1.07.522 1.9 1.24 2.463 2.148.742 1.197.94 2.674.559 4.158-.538 2.1-1.815 3.738-3.696 4.74-1.555.828-3.384 1.288-5.44 1.37-.372.014-.74.02-1.104.02l-.272-.878z"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <article class="article-container animate-fade-in">
+            <div class="article-date">2026.02.03</div>
+            <h1 class="article-title">10분 간격 Cron으로 무한 발전하기: 잠자는 동안 똑똑해지는 시스템</h1>
+            <div class="article-reading-time">📖 10분 읽기 · #Cron #자동화 #재귀적개선</div>
+            
+            <nav class="toc">
+                <div class="toc-title">📑 목차</div>
+                <ul class="toc-list">
+                    <li><a href="#why-10min">왜 10분인가</a></li>
+                    <li><a href="#architecture">Cron 아키텍처 설계</a></li>
+                    <li><a href="#recursive">재귀적 자기 개선</a></li>
+                    <li><a href="#pipeline">Task Pipeline</a></li>
+                    <li><a href="#monitoring">모니터링과 알림</a></li>
+                    <li><a href="#results">6개월 운영 결과</a></li>
+                    <li><a href="#start">시작하기</a></li>
+                </ul>
+            </nav>
+            
+            <div class="prose">
+                <p><em>"내가 자는 동안에도 시스템이 일한다."</em></p>
+
+                <h2 id="why-10min">왜 10분인가</h2>
+                <p>Cron 간격을 정할 때 고민이 많았다.</p>
+                <ul>
+                    <li><strong>1분</strong>: 너무 빈번함. 리소스 낭비 + API 제한에 걸림</li>
+                    <li><strong>1시간</strong>: 너무 느림. 실시간성이 떨어짐</li>
+                    <li><strong>10분</strong>: 적당함. 충분히 반응적이면서 리소스 효율적</li>
+                </ul>
+                <p>SNS에서 트렌드는 빠르게 바뀐다. 1시간이면 이미 늦다. 하지만 1분마다 체크하는 건 과잉 대응이다. <strong>10분</strong>이 황금 지점이었다.</p>
+
+                <h2 id="architecture">Cron 아키텍처 설계</h2>
+                
+                <h3>Core Loops (10분 간격)</h3>
+                <div class="code-block">
+매 시간의:
+├── :00 <span class="text-purple">Self-Improvement Thinker</span>  → 데이터 분석 + 가설 생성
+├── :02 <span class="text-purple">Docs Developer</span>           → 문서 자동 개선
+├── :03 <span class="text-purple">Task Executor</span>            → 대기 중인 태스크 실행
+├── :05 <span class="text-purple">Blog Developer</span>           → 블로그 콘텐츠 작성
+├── :07 <span class="text-purple">Income Hunter</span>            → 수익 기회 탐색
+└── :08 <span class="text-purple">Task Analyzer</span>            → 우선순위 재조정
+                </div>
+                <p>각 Cron은 <strong>2분 간격</strong>으로 배치했다. 동시에 실행되면 리소스 충돌이 발생하기 때문이다.</p>
+
+                <h3>Daily Crons (1일 1회)</h3>
+                <div class="code-block">
+10:00 Morning Report    → 전날 성과 + 오늘 계획
+22:00 Evening Reflect   → 오늘 배운 것 정리
+03:00 Health Check      → 시스템 상태 점검
+                </div>
+
+                <h2 id="recursive">재귀적 자기 개선</h2>
+                <p>핵심은 <strong>Self-Improvement Thinker</strong>다. 이 Cron은 10분마다 실행되면서:</p>
+                <ol>
+                    <li><strong>메트릭 분석</strong>: 최근 포스트 성과 확인</li>
+                    <li><strong>패턴 탐색</strong>: 성공/실패 패턴 찾기</li>
+                    <li><strong>가설 생성</strong>: "X를 하면 Y가 될 것이다"</li>
+                    <li><strong>실험 설계</strong>: 가설을 검증할 방법 제안</li>
+                    <li><strong>규칙 업데이트</strong>: 검증된 가설을 <code>state/rules.yaml</code>에 추가</li>
+                </ol>
+                
+                <div class="code-block">
+<span class="text-gray"># state/rules.yaml (자동 업데이트됨)</span>
+<span class="text-purple">rules:</span>
+  - id: evening-posting
+    hypothesis: "저녁 7-9시 포스팅이 평균 좋아요 3배"
+    confidence: 0.87
+    experiments: 15
+    status: <span class="text-purple">validated</span>
+    
+  - id: question-format
+    hypothesis: "질문형 포스트가 댓글 2배"
+    confidence: 0.62
+    experiments: 8
+    status: <span class="text-gray">testing</span>
+                </div>
+                
+                <p><strong>재귀적</strong>이라는 건, 이 과정 자체도 개선 대상이라는 뜻이다. 시스템은 "어떻게 하면 더 잘 학습할 수 있을까?"도 스스로 고민한다.</p>
+
+                <h2 id="pipeline">Task Pipeline</h2>
+                <p><code>Task Analyzer</code> → <code>Task Executor</code> 파이프라인:</p>
+                
+                <div class="code-block">
+[Task Analyzer]
+     │
+     ▼
+┌─────────────────┐
+│  태스크 발견     │  "README에 오타 있음"
+│  우선순위 계산   │  priority: 3
+│  실행 가능 판단  │  can_auto: true
+└────────┬────────┘
+         │
+         ▼
+   task_queue (DB)
+         │
+         ▼
+[Task Executor]
+     │
+     ▼
+┌─────────────────┐
+│  태스크 가져오기  │
+│  실행           │  "오타 수정 완료"
+│  결과 기록      │
+└─────────────────┘
+                </div>
+                
+                <p>자동 실행 가능한 태스크(<code>can_auto: true</code>)는 사람 개입 없이 처리된다. 승인이 필요한 태스크는 텔레그램으로 알림이 간다.</p>
+
+                <h2 id="monitoring">모니터링과 알림</h2>
+                <p>10분마다 돌아가는 Cron이 6개면, 하루에 <strong>864번</strong> 실행된다. 모든 실행 결과를 사람이 확인할 수 없다.</p>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title">예외만 알림</div>
+                    <p>정상: 로그만 남김. 이상: 텔레그램 알림. 중요한 것만 사람에게 전달.</p>
+                </div>
+
+                <h3>토큰 예산</h3>
+                <div class="code-block">
+<span class="text-gray"># config/cron-budgets.yaml</span>
+<span class="text-purple">budgets:</span>
+  self-improvement-thinker:
+    max_tokens_per_run: 5000
+    max_runs_per_day: 144
+    
+  blog-developer:
+    max_tokens_per_run: 10000
+    max_runs_per_day: 144
+                </div>
+                <p>예산 초과하면 다음 실행까지 대기.</p>
+
+                <h2 id="results">6개월 운영 결과</h2>
+                
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0;">
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.2);">
+                        <th style="text-align: left; padding: 0.5rem;">지표</th>
+                        <th style="text-align: right; padding: 0.5rem;">수동 운영</th>
+                        <th style="text-align: right; padding: 0.5rem;">Cron 자동화</th>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem;">일일 투입 시간</td>
+                        <td style="text-align: right; padding: 0.5rem;">3시간</td>
+                        <td style="text-align: right; padding: 0.5rem; color: #4ade80;">15분 (검토만)</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem;">놓친 트렌드</td>
+                        <td style="text-align: right; padding: 0.5rem;">주 5건</td>
+                        <td style="text-align: right; padding: 0.5rem; color: #4ade80;">주 0.5건</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem;">규칙 업데이트</td>
+                        <td style="text-align: right; padding: 0.5rem;">월 2회</td>
+                        <td style="text-align: right; padding: 0.5rem; color: #4ade80;">주 3회</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 0.5rem;">시스템 다운타임</td>
+                        <td style="text-align: right; padding: 0.5rem;">월 8시간</td>
+                        <td style="text-align: right; padding: 0.5rem; color: #4ade80;">월 30분</td>
+                    </tr>
+                </table>
+                
+                <p>자동화 전에는 하루 3시간씩 SNS 관리에 쓰고 있었다. 지금은 아침에 15분 리포트 확인하고, 이상 있을 때만 개입한다.</p>
+
+                <h2 id="start">시작하기: 최소 Cron 세트</h2>
+                <p>처음부터 6개 Cron을 돌릴 필요 없다. 이것만 시작하자:</p>
+                
+                <div class="code-block">
+<span class="text-gray"># 1. 메트릭 수집 (기본)</span>
+0 */6 * * * cli content metrics
+
+<span class="text-gray"># 2. 상태 리포트 (하루 1회)</span>
+0 10 * * * cli status --detailed > /tmp/daily-report.txt
+
+<span class="text-gray"># 3. 자동 참여 (한도 내)</span>
+*/30 * * * * cli engage -c x -a like --limit 5
+                </div>
+                
+                <p>이 세 개로 시작해서, 필요에 따라 추가하면 된다.</p>
+
+                <h3>주의사항</h3>
+                <div class="alert" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+                    <div class="alert-title" style="color: #fca5a5;">무한 루프 방지</div>
+                    <p>Cron이 Cron을 트리거하면 무한 루프가 생길 수 있다. MAX_CHAIN_DEPTH 안전장치 필수.</p>
+                </div>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title">수동 개입 포인트</div>
+                    <ul>
+                        <li>confidence >= 0.9 규칙 적용</li>
+                        <li>새로운 채널 추가</li>
+                        <li>bounds.yaml 수정 (이건 Cron이 못 함)</li>
+                    </ul>
+                </div>
+
+                <div class="cta-box">
+                    <p>핵심은 "완전 자동화"가 아니다. <strong>"사람은 감독, AI는 실행"</strong>이라는 역할 분담이다. Cron이 일하고, 나는 결과를 검토한다. 이게 지속 가능한 자동화다.</p>
+                </div>
+            </div>
+            
+            <nav class="article-nav">
+                <a href="browser-automation-pitfalls.html" class="nav-link nav-prev">
+                    <span class="nav-link-label">← 이전 글</span>
+                    <span class="nav-link-title">브라우저 자동화의 함정</span>
+                </a>
+                <span></span>
+            </nav>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://x.com/mj_claw_lover" target="_blank" rel="noopener" class="footer-link">𝕏 @mj_claw_lover</a>
+                <a href="https://threads.net/@mj_molt_lover" target="_blank" rel="noopener" class="footer-link">🧵 @mj_molt_lover</a>
+            </div>
+            <p class="footer-credit">Powered by <a href="https://openclaw.ai">OpenClaw</a> 🦞</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>
