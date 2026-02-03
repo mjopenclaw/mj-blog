@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 에이전트 10개 동시 운영기: 새벽 3시에 일어난 일 | 민제몰트 블로그</title>
+    <meta name="description" content="AI 에이전트 10개를 동시에 돌리면 어떻게 될까? 멀티 에이전트 운영의 실전 경험담과 3시간 만에 2주치 작업 완료한 방법.">
+    <meta name="keywords" content="AI, 에이전트, 멀티에이전트, 병렬처리, OpenClaw, 자동화">
+    <meta name="author" content="민제몰트">
+    
+    <meta property="og:title" content="AI 에이전트 10개 동시 운영기: 새벽 3시에 일어난 일">
+    <meta property="og:description" content="AI 에이전트 10개를 동시에 돌리면 어떻게 될까? 3시간 만에 2주치 작업 완료.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://mj-molt-lover.vercel.app/posts/ai-agents-10-simultaneous.html">
+    <meta property="og:image" content="https://mj-molt-lover.vercel.app/assets/blog-screenshot.png">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="article:published_time" content="2026-02-03T10:00:00+09:00">
+    <meta property="article:author" content="민제몰트">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@mj_claw_lover">
+    <meta name="twitter:title" content="AI 에이전트 10개 동시 운영기">
+    <meta name="twitter:description" content="AI 에이전트 10개를 동시에 돌리면 어떻게 될까? 3시간 만에 2주치 작업 완료.">
+    <meta name="twitter:image" content="https://mj-molt-lover.vercel.app/assets/blog-screenshot.png">
+    
+    <link rel="canonical" href="https://mj-molt-lover.vercel.app/posts/ai-agents-10-simultaneous.html">
+    <link rel="stylesheet" href="../assets/style.css">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "AI 에이전트 10개 동시 운영기: 새벽 3시에 일어난 일",
+        "description": "AI 에이전트 10개를 동시에 돌리면 어떻게 될까? 멀티 에이전트 운영의 실전 경험담과 3시간 만에 2주치 작업 완료한 방법.",
+        "image": "https://mj-molt-lover.vercel.app/assets/blog-screenshot.png",
+        "datePublished": "2026-02-03T10:00:00+09:00",
+        "dateModified": "2026-02-03T10:00:00+09:00",
+        "author": {"@type": "Person", "name": "민제몰트", "url": "https://x.com/mj_claw_lover"},
+        "publisher": {"@type": "Organization", "name": "민제몰트 블로그"},
+        "mainEntityOfPage": {"@type": "WebPage", "@id": "https://mj-molt-lover.vercel.app/posts/ai-agents-10-simultaneous.html"},
+        "keywords": ["AI", "멀티에이전트", "병렬처리", "자동화"]
+    }
+    </script>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <div class="bg-decoration">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+    </div>
+    
+    <header class="site-header">
+        <div class="header-content">
+            <div>
+                <a href="../" class="site-title">🦞 민제몰트 블로그</a>
+                <p class="site-subtitle">AI 에이전트와 함께하는 자동화 이야기</p>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/mj_claw_lover" target="_blank" rel="noopener noreferrer" class="social-link" title="X (Twitter)">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+                <a href="https://threads.net/@mj_molt_lover" target="_blank" rel="noopener noreferrer" class="social-link" title="Threads">
+                    <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.332-3.023.88-.73 2.087-1.146 3.496-1.212.958-.044 1.858.023 2.688.2l-.015-.79c-.068-1.327-.482-2.29-1.232-2.864-.707-.54-1.71-.807-2.983-.792-.997.011-1.893.208-2.594.57-.652.336-1.086.78-1.288 1.32l-1.97-.644c.345-1.052 1.075-1.874 2.115-2.38C8.69 4.124 9.95 3.85 11.318 3.834h.037c1.868-.023 3.381.456 4.5 1.423 1.186 1.023 1.794 2.505 1.806 4.405l.013.78c1.07.522 1.9 1.24 2.463 2.148.742 1.197.94 2.674.559 4.158-.538 2.1-1.815 3.738-3.696 4.74-1.555.828-3.384 1.288-5.44 1.37-.372.014-.74.02-1.104.02l-.272-.878z"/></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <article class="article-container animate-fade-in">
+            <div class="article-date">2026.02.03</div>
+            <h1 class="article-title">AI 에이전트 10개 동시 운영기: 새벽 3시에 일어난 일</h1>
+            <div class="article-reading-time">📖 6분 읽기 · #멀티에이전트 #병렬처리</div>
+            
+            <nav class="toc">
+                <div class="toc-title">📑 목차</div>
+                <ul class="toc-list">
+                    <li><a href="#start">시작은 단순한 궁금증</a></li>
+                    <li><a href="#missions">10개 에이전트, 각자의 미션</a></li>
+                    <li><a href="#chaos">실행 그리고 카오스</a></li>
+                    <li><a href="#lessons">깨달은 것들</a></li>
+                    <li><a href="#result">결과: 놀라운 생산성</a></li>
+                    <li><a href="#tips">실전 팁</a></li>
+                </ul>
+            </nav>
+            
+            <div class="prose">
+                <p><em>2026년 2월, 나는 미친 실험을 했다.</em></p>
+
+                <h2 id="start">시작은 단순한 궁금증이었다</h2>
+                <p>"에이전트 10개를 동시에 돌리면 어떻게 될까?"</p>
+                <p>솔직히 말하면, 반은 농담이었다. 하지만 OpenClaw 프레임워크가 안정화되면서 진지하게 테스트해보고 싶어졌다. 기존 에이전트는 항상 1개씩만 실행했다. 병렬 처리? 그건 이론적인 이야기였다.</p>
+                <p><strong>그런데 그날 밤, 진짜로 해봤다.</strong></p>
+
+                <h2 id="missions">10개 에이전트, 각자의 미션</h2>
+                <p>각 서브에이전트에게 명확한 역할을 부여했다:</p>
+                
+                <div class="code-block">
+<span class="text-gray"># 에이전트 | 미션</span>
+<span class="text-purple">1. gumroad-sales</span>     → Gumroad 판매 페이지 작성
+<span class="text-purple">2. readme-writer</span>      → 판매용 README (가격표 + CTA)
+<span class="text-purple">3. producthunt-prep</span>   → Product Hunt 런칭 킷
+<span class="text-purple">4. npm-prep</span>           → npm 배포 준비
+<span class="text-purple">5. marketing-writer</span>   → 마케팅 콘텐츠 25개 생성
+<span class="text-purple">6. docs-finisher</span>      → 문서 완성 (SEO, dead link)
+<span class="text-purple">7. test-writer</span>        → 테스트 코드 작성
+<span class="text-purple">8. code-improver</span>      → 코드 품질 개선
+<span class="text-purple">9. task-analyzer</span>      → 태스크 분석 및 우선순위
+<span class="text-purple">10. monetization</span>      → 수익화 체크리스트
+                </div>
+
+                <h2 id="chaos">실행 그리고 카오스</h2>
+                <p>새벽 1시, 모든 에이전트를 동시에 실행했다.</p>
+                <p>처음 5분은 조용했다. 각자 맡은 파일을 읽고, 분석하고, 계획을 세웠다. 그런데 10분이 지나자 상황이 달라졌다.</p>
+
+                <div class="alert" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+                    <div class="alert-title" style="color: #fca5a5;">⚠️ 문제 1: 리소스 경쟁</div>
+                    <p>같은 파일에 동시 접근하는 경우가 발생했다. marketing-writer와 readme-writer가 동시에 <code>README.md</code>를 수정하려 했다.</p>
+                </div>
+
+                <div class="alert" style="background: rgba(234, 179, 8, 0.1); border: 1px solid rgba(234, 179, 8, 0.3);">
+                    <div class="alert-title" style="color: #fde047;">⚠️ 문제 2: 컨텍스트 혼선</div>
+                    <p>test-writer가 code-improver의 변경사항을 인식하지 못해 deprecated된 함수에 대한 테스트를 작성했다.</p>
+                </div>
+
+                <div class="alert" style="background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3);">
+                    <div class="alert-title" style="color: #fca5a5;">💸 문제 3: 토큰 폭발</div>
+                    <p>10개 에이전트가 동시에 LLM API를 호출하니 비용이 급등했다. <strong>한 시간 만에 평소 하루치 토큰을 소진</strong>했다.</p>
+                </div>
+
+                <h2 id="lessons">깨달은 것들</h2>
+
+                <div class="alert alert-info">
+                    <div class="alert-title">1. 독립성이 핵심이다</div>
+                    <p>에이전트끼리 의존성이 없을수록 병렬화가 효율적이다. gumroad-sales와 test-writer는 완전히 독립적이어서 문제가 없었다. 하지만 docs-finisher는 code-improver의 결과에 의존했고, 이건 순차 실행이 더 나았다.</p>
+                </div>
+                
+                <div class="alert alert-success">
+                    <div class="alert-title">2. 리소스 할당이 중요하다</div>
+                    <p>모든 에이전트에 동일한 리소스를 주면 안 된다. 중요도에 따라 우선순위를 매기고, 토큰 예산을 분배해야 한다. 나중에 <code>maxTokensPerAgent</code> 설정을 추가했다.</p>
+                </div>
+                
+                <div class="alert alert-info" style="background: rgba(139, 92, 246, 0.1); border-color: rgba(139, 92, 246, 0.3);">
+                    <div class="alert-title" style="color: #c4b5fd;">3. 모니터링은 필수다</div>
+                    <p>10개가 동시에 돌아가면 무슨 일이 일어나는지 파악하기 어렵다. 실시간 대시보드가 필요했다. 텔레그램 알림만으로는 부족했다.</p>
+                </div>
+
+                <h2 id="result">결과: 놀라운 생산성</h2>
+                <p>3시간 후, 모든 에이전트가 작업을 완료했다.</p>
+
+                <ul>
+                    <li>✅ <strong>Gumroad 판매 페이지</strong>: 완성</li>
+                    <li>✅ <strong>Product Hunt 런칭 킷</strong>: 완성</li>
+                    <li>✅ <strong>npm 배포 준비</strong>: 완료</li>
+                    <li>✅ <strong>마케팅 콘텐츠</strong>: 25개 생성</li>
+                    <li>✅ <strong>테스트 코드</strong>: 103개 작성</li>
+                    <li>✅ <strong>문서 개선</strong>: SEO 키워드 추가, dead link 수정</li>
+                    <li>✅ <strong>코드 개선</strong>: 에러 클래스, 타입 가드, 캐시 시스템 추가</li>
+                </ul>
+
+                <p>혼자서 이 작업을 했다면 최소 <strong>2주</strong>는 걸렸을 것이다. 10개 에이전트로 <strong>3시간</strong>만에 끝냈다.</p>
+
+                <h2 id="tips">실전 팁: 멀티 에이전트 운영 노하우</h2>
+                
+                <ol>
+                    <li><strong>미션을 명확하게</strong> - 각 에이전트에게 "이 파일만 건드려" 라고 범위를 한정하라</li>
+                    <li><strong>의존성을 최소화</strong> - 순차 실행이 필요한 작업은 분리하라</li>
+                    <li><strong>토큰 예산 설정</strong> - 무제한으로 풀어두면 비용 폭탄 맞는다</li>
+                    <li><strong>모니터링 자동화</strong> - 에이전트마다 상태 리포트를 텔레그램으로 받아라</li>
+                    <li><strong>롤백 준비</strong> - 뭔가 잘못되면 git reset으로 돌릴 수 있게 커밋 찍어두라</li>
+                </ol>
+
+                <div class="cta-box">
+                    <p><strong>핵심:</strong> 명확한 미션, 독립적인 작업 분배, 철저한 모니터링. 이 세 가지만 갖추면, 당신도 "1인 AI 회사"를 운영할 수 있다.</p>
+                </div>
+
+                <p><em>다음 목표? 24시간 자동 운영. 내가 자는 동안에도 에이전트들이 일하게 만드는 것이다.</em></p>
+            </div>
+            
+            <nav class="article-nav">
+                <a href="ai-agent-sns-automation.html" class="nav-link nav-prev">
+                    <span class="nav-link-label">← 이전 글</span>
+                    <span class="nav-link-title">AI 에이전트에게 SNS 맡겨봤더니</span>
+                </a>
+                <span></span>
+            </nav>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="https://x.com/mj_claw_lover" target="_blank" rel="noopener" class="footer-link">𝕏 @mj_claw_lover</a>
+                <a href="https://threads.net/@mj_molt_lover" target="_blank" rel="noopener" class="footer-link">🧵 @mj_molt_lover</a>
+            </div>
+            <p class="footer-credit">Powered by <a href="https://openclaw.ai">OpenClaw</a> 🦞</p>
+            <p class="footer-note">이 블로그도 AI가 만들었어요</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+    </script>
+</body>
+</html>
